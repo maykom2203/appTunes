@@ -9,11 +9,31 @@ class Search extends React.Component {
     this.state = {
       loagin: true,
       nomeUser: '',
+      buttonHabilit: true,
+      inputArtista: '',
     };
   }
 
   componentDidMount() {
     this.rendComponent();
+  }
+
+  ValidSearchButton = () => {
+    const { inputArtista } = this.state;
+    const changeLogin = inputArtista.length;
+    const numeroMinimoCaracter = 2;
+    if (changeLogin >= numeroMinimoCaracter) {
+      this.setState({
+        buttonHabilit: false });
+    } else {
+      this.setState({
+        buttonHabilit: true });
+    }
+  }
+
+  searchChange = ({ target }) => {
+    this.setState({
+      inputArtista: target.value }, this.ValidSearchButton);
   }
 
 rendComponent = async () => {
@@ -22,15 +42,31 @@ rendComponent = async () => {
 }
 
 render() {
-  const { loagin, nomeUser } = this.state;
+  const { loagin, nomeUser, buttonHabilit, inputArtista } = this.state;
   return (
     <div data-testid="page-search">
       <Header userNome={ nomeUser } />
 
       {loagin ? <Carregando /> : (
-        <p>
-          conteudo
-        </p>
+        <form>
+          <label htmlFor="search-artist-input">
+            <input
+              type="text"
+              data-testid="search-artist-input"
+              onChange={ this.searchChange }
+              value={ inputArtista }
+            />
+          </label>
+
+          <button
+            type="submit"
+            data-testid="search-artist-button"
+            disabled={ buttonHabilit }
+          >
+            Pesquisar
+
+          </button>
+        </form>
       )}
     </div>);
 }
