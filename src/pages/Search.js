@@ -23,7 +23,7 @@ class Search extends React.Component {
     this.rendComponent();
   }
 
-  buttonPesquisar= async (event) => {
+  buttonPesquisar = async (event) => {
     event.preventDefault();
     const { inputArtista } = this.state;
     const albums = await searchAlbumsAPI(inputArtista);
