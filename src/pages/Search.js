@@ -1,5 +1,7 @@
 import React from 'react';
+import '../style/paginas/search.css';
 import { Link } from 'react-router-dom';
+import lupa from '../imagens/lupa.png';
 import Header from '../components/Header';
 import Carregando from '../components/Carregando';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
@@ -28,10 +30,12 @@ class Search extends React.Component {
     const { inputArtista } = this.state;
     const albums = await searchAlbumsAPI(inputArtista);
     this.setState({ carregandoAp: true });
-    this.setState({ albumNovo: albums,
+    this.setState({
+      albumNovo: albums,
       carregandoAp: false,
       inputArtista: '',
-      salveArtista: inputArtista });
+      salveArtista: inputArtista,
+    });
   }
 
   ValidSearchButton = () => {
@@ -40,77 +44,96 @@ class Search extends React.Component {
     const numeroMinimoCaracter = 2;
     if (changeLogin >= numeroMinimoCaracter) {
       this.setState({
-        buttonHabilit: false });
+        buttonHabilit: false,
+      });
     } else {
       this.setState({
-        buttonHabilit: true });
+        buttonHabilit: true,
+      });
     }
   }
 
   searchChange = ({ target }) => {
     this.setState({
-      inputArtista: target.value }, this.ValidSearchButton);
+      inputArtista: target.value,
+    }, this.ValidSearchButton);
   }
 
-rendComponent = async () => {
-  const user = await getUser();
-  this.setState({ loagin: false, nomeUser: user.name });
-}
+  rendComponent = async () => {
+    const user = await getUser();
+    this.setState({ loagin: false, nomeUser: user.name });
+  }
 
-render() {
-  const { loagin, nomeUser,
-    buttonHabilit, inputArtista, albumNovo, carregandoAp, salveArtista } = this.state;
-  return (
-    <div data-testid="page-search">
-      <Header userNome={ nomeUser } />
+  render() {
+    const { loagin, nomeUser,
+      buttonHabilit, inputArtista, albumNovo, carregandoAp, salveArtista } = this.state;
+    return (
+      <div data-testid="page-search">
+        <Header userNome={ nomeUser } />
 
-      {loagin === true || carregandoAp === true ? <Carregando /> : (
-        <form>
-          <label htmlFor="search-artist-input">
-            <input
-              type="text"
-              data-testid="search-artist-input"
-              onChange={ this.searchChange }
-              value={ inputArtista }
-            />
-          </label>
+        {loagin === true || carregandoAp === true ? <Carregando /> : (
 
-          <button
-            type="submit"
-            data-testid="search-artist-button"
-            disabled={ buttonHabilit }
-            onClick={ this.buttonPesquisar }
+          <form className="formSearch">
 
-          >
-            Pesquisar
+            <label htmlFor="search-artist-input" className="relative block">
 
-          </button>
-        </form>
-      )}
-      <p>
-        Resultado de álbuns de:
-        {' '}
-        { salveArtista }
-        {' '}
-      </p>
-      { albumNovo.length === 0 ? <p> Nenhum álbum foi encontrado </p>
-        : albumNovo.map((album) => (
-          <div key={ album.collectionId }>
-            <p>
-              <Link
-                to={ `album/${album.collectionId}` }
-                data-testid={ `link-to-album-${album.collectionId}` }
-              >
-                { album.collectionName}
-                {' '}
+              <input
+                data-testid="search-artist-input"
+                className="inputSearch"
+                onChange={ this.searchChange }
+                value={ inputArtista }
+                type="text"
+                name="search"
+              />
 
-              </Link>
-            </p>
-            <img src={ album.artworkUrl100 } alt={ album.artistName } />
-          </div>
-        ))}
-    </div>);
-}
+            </label>
+            <button
+              type="submit"
+              data-testid="search-artist-button"
+              disabled={ buttonHabilit }
+              onClick={ this.buttonPesquisar }
+            >
+              <img src={ lupa } alt="lupa" />
+              Pesquisar
+            </button>
+
+          </form>
+        )}
+        <h3>
+          Resultado de álbuns de:
+          {' '}
+          {salveArtista}
+          {' '}
+        </h3>
+
+        <div className="cardAling">
+          {albumNovo.length === 0 ? <h3> Nenhum álbum foi encontrado </h3>
+            : albumNovo.map((album) => (
+
+              <div key={ album.collectionId } className="card card-info">
+                <Link
+                  className="tituloCard"
+                  to={ `album/${album.collectionId}` }
+                  data-testid={ `link-to-album-${album.collectionId}` }
+                >
+                  <img
+                    src={ album.artworkUrl100 }
+                    alt={ album.artistName }
+                    className="imagemCard"
+                  />
+                  <p>
+
+                    {album.collectionName}
+                    {' '}
+
+                  </p>
+                </Link>
+
+              </div>
+            ))}
+        </div>
+      </div>);
+  }
 }
 
 export default Search;

@@ -6,7 +6,7 @@ class Favorites extends React.Component {
     return (
       <div data-testid="page-favorites">
         <Header />
-        <p>
+        <p className="text-3xl font-bold underline">
           Favorites
         </p>
       </div>);

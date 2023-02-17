@@ -1,0 +1,132 @@
+.formSearch {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.inputSearch {
+    border: 1px black solid;
+    padding: 6px;
+    width: 280px;
+    border-radius: 1rem;
+    background: #e8e8e8;
+    transition: 0.3s;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    background-image: linear-gradient(to top, #D8D9DB 0%, #fff 80%, #FDFDFD 100%);
+    border-radius: 30px;
+    border: 1px solid #8F9092;
+    transition: all 0.2s ease;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #606060;
+    text-shadow: 0 1px #080808;
+}
+
+/* button:hover {
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1;
+  } */
+
+button:active {
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+}
+
+button:focus {
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+}
+
+.cardAling {
+    margin-top: 30px;
+  width: 1150px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+    
+}
+
+.card {
+    --background: linear-gradient(to left, #110759 0%, #504bdb 100%);
+    width: 50px;
+    height: 254px;
+    /* padding: 5px; */
+    border-radius: 1rem;
+    overflow: visible;
+    background: #1b9dee;
+    background: var(--background);
+    position: relative;
+    z-index: 1;
+}
+
+.card::after {
+    position: absolute;
+    content: "";
+    top: 30px;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    transform: scale(0.8);
+    filter: blur(25px);
+    background: #f0efed;
+    background: var(--background);
+    transition: opacity .5s;
+}
+
+.card-info {
+    --color: #040837;
+    background: var(--color);
+    color: var(--color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 5px;
+    width: 200px;
+    height: 300px;
+    overflow: visible;
+    border-radius: .7rem;
+}
+
+.card .title {
+    font-weight: bold;
+    letter-spacing: .1em;
+}
+
+/*Hover*/
+.card:hover::after {
+    opacity: 5%;
+}
+
+.card:hover .card-info {
+    color: #7d7b7b;
+    transition: color 1s;
+}
+
+.imagemCard {
+    width: 150px;
+    height: auto;
+}
+
+.tituloCard {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size:medium;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: oblique;
+    font-display:inherit;
+}

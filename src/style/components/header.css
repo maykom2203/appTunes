@@ -1,0 +1,43 @@
+.navHeader:link,
+.navHeader:visited {
+ 
+  color: #ffffff;
+  font-size: 20px;
+  text-decoration: none;
+  padding:10px;
+
+}
+
+.navHeader:hover {
+  text-decoration: underline;
+  text-decoration-color: #ffffff;
+  transition-duration: 400ms;
+  transition-property: width;
+  color:#1b9dee;
+
+}
+
+.navHeader:focus {
+  text-decoration: underline;
+  text-decoration-color:#1b9dee;
+  transition-duration: 400ms;
+  transition-property: width;
+  color: #ffffffe4;
+}
+
+#header-component {
+    background: linear-gradient(180.21deg, #1b9dee 7.32%, #00050c 101.36%);
+    color: #ffffff;
+    display: flex;
+    font-family: Verdana , Tahoma , sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    justify-content:space-around;
+    align-items: center;
+    height: 50px;
+    width: auto;
+  }
+
+  
+  

@@ -1,4 +1,5 @@
 import React from 'react';
+import '../style/paginas/login.css';
 import { Redirect } from 'react-router-dom';
 import Carregando from '../components/Carregando';
 import { createUser } from '../services/userAPI';
@@ -45,29 +46,34 @@ class Login extends React.Component {
     return (
 
       loagin ? <Carregando /> : (
-        <div data-testid="page-login">
-          <form>
-            {isLoading && <Redirect to="/search" />}
-            <label htmlFor="login-name-input">
-              Login
-              <input
-                type="text"
-                data-testid="login-name-input"
-                onChange={ this.handleChange }
-                value={ inputLogin }
-              />
-            </label>
+        <div className="user-login-area ">
+          <div data-testid="page-login" className="user-login-area form">
+            <form>
+              {isLoading && <Redirect to="/search" />}
+              <label htmlFor="login-name-input" className="loginLabel">
+                NOME
+                <input
+                  type="text"
+                  data-testid="login-name-input"
+                  className="inputLogin"
+                  onChange={ this.handleChange }
+                  value={ inputLogin }
+                />
+              </label>
 
-            <button
-              type="submit"
-              data-testid="login-submit-button"
-              disabled={ buttonHabilit }
-              onClick={ this.buttonLogin }
-            >
-              Entrar
+              <button
+                type="submit"
+                className="rainbow-hover"
+                data-testid="login-submit-button"
+                disabled={ buttonHabilit }
+                onClick={ this.buttonLogin }
+              >
+                Entrar
 
-            </button>
-          </form>
+              </button>
+            </form>
+          </div>
+
         </div>
       ));
   }
