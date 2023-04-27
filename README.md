@@ -22,7 +22,7 @@
 Para acessar o projeto, atente-se a cada passo descrito a seguir, e se tiver qualquer dúvida, me envie uma mensagem :)
 
 Clone o repositório
-Use o comando: git@github.com:maykom2203/System-Solar.git
+Use o comando: git@github.com:maykom2203/appTunes.git
 
 Instale as dependências
 npm install.
