@@ -17,7 +17,7 @@ class Header extends React.Component {
             <Link to="/favorites" className="navHeader">
               músicas favoritas
             </Link>
-            <Link to="/profile" className="navHeader"> perfil </Link>
+            {/* <Link to="/profile" className="navHeader"> perfil </Link> */}
           </nav>
         </header>
       </div>

@@ -90,6 +90,7 @@ class Search extends React.Component {
             <button
               type="submit"
               data-testid="search-artist-button"
+              className="searchButton"
               disabled={ buttonHabilit }
               onClick={ this.buttonPesquisar }
             >
